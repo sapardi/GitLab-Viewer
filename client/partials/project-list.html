@@ -1,0 +1,19 @@
+<div>
+	<div>
+		<h1> Projects List</h1>
+	</div>
+</div>
+<div>
+	<input ng-model="query" type="search" placeholder="search project">
+</div>
+<div>
+	<ul>
+		<li ng-repeat="project in projects | filter:query | orderBy:orderProp">
+			<a ng-click="go('/projects/' + project.id)">
+				<img ng-src="">
+				<p>{{ project.name }}</p>
+				<p>{{ project.owner.name }} - {{ project.owner.created_at }}</p>
+			</a>
+		</li>
+	</ul>
+</div>
