@@ -1,16 +1,17 @@
 /**
- * Created by sapardi on 1/19/14.
+ * Created by sapardi 
  */
 
 var express = require('express');
-var    path = require('path');
-// var gitlab = require('./routes/gitlab');
+var http = require('http');
+var path = require('path');
 
 var app = express();
 app.use(express.bodyParser());
 app.use(express.static(path.join(__dirname, '../client')));
 
-// app.get('/projects', gitlab.projects);
+http.createServer(app).listen(3000, function () {
+    console.log("Listening on http://localhost:3000...");
+});
 
-app.listen(3000);
-console.log("Listening on http://localhost:3000...");
+

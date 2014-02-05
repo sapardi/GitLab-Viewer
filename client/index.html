@@ -1,23 +1,40 @@
 <!DOCTYPE html>
 
-<html lang="en" ng-app="gitlabApp">
+<html ng-app="gitlabApp">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport"
-	      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-	<link href="css/style.css" rel="stylesheet">
-	<script src="lib/angular.js"></script>
-	<script src="lib/angular-resource.js"></script>
-	<script src="lib/angular-route.js"></script>
-	<script src="js/app.js"></script>
-	<script src="js/controllers.js"></script>
+    
+	<title>GitLab Monitoring</title>
+    <script type="text/javascript" src="lib/angular.min.js"></script>
+    <script type="text/javascript" src="lib/angular-resource.min.js"></script>
+	<script type="text/javascript" src="js/controllers/app.js"></script>
+	<script type="text/javascript" src="js/controllers/home.js"></script>
+    <script type="text/javascript" src="js/controllers/projects.js"></script>
+    <script type="text/javascript" src="js/controllers/users.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/rest-services.js"></script>    
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.responsive.min.css">
 
 </head>
-<body ng-controller="MainCtrl">
+<body>
 
-<h2> Selamat Datang </h2>
-
-<div ng-view></div>
-
+    <div class="container" ng-controller="AppCtrl">
+        <h1>Gitlab Viewer</h1>
+        
+        <ul class="nav nav-pills">
+            <li ng-class="homeActive">
+                <a href="#">Home</a>
+            </li>
+            <li ng-class="projectsActive">
+                <a href="#/projects">Projects</a>
+            </li>
+            <li ng-class="usersActive">
+                <a href="#/users">Users</a>
+            </li>            
+        </ul>
+        
+        <div ng-view></div>
+    </div>
+    
 </body>
 </html>

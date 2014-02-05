@@ -1,19 +1,28 @@
-<div>
-	<div>
-		<h1> Projects List</h1>
-	</div>
+<h3> Cari Aplikasi </h3>
+
+<div class="controls controls-row">
+    <input type="text" class="input-small" placeholder="Nama Aplikasi" ng-model="search.aplikasi" />    
 </div>
-<div>
-	<input ng-model="query" type="search" placeholder="search project">
-</div>
-<div>
-	<ul>
-		<li ng-repeat="project in projects | filter:query | orderBy:orderProp">
-			<a ng-click="go('/projects/' + project.id)">
-				<img ng-src="">
-				<p>{{ project.name }}</p>
-				<p>{{ project.owner.name }} - {{ project.owner.created_at }}</p>
-			</a>
-		</li>
-	</ul>
-</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nama Aplikasi</th>
+            <th>HTTP Repo</th>
+            <th>Tanggal Dibuat</th>
+        </tr>        
+    </thead>
+    <tbody>
+        <tr ng-repeat="project in projects | filter: search">
+            <td>{{project.id}}</td>
+            <td>
+                <a ng-href="#/projects/{{project.name}}">
+                    {{project | projectName}}
+                </a>    
+            </td>
+            <td>{{project.http_url_to_repo}}</td>
+            <td>{{project.created_at}}</td>
+        </tr>
+    </tbody>
+</table>
